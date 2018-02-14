@@ -1,0 +1,29 @@
+{
+  "name": "fullstack-hy_part4_blogilista",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mynttih/FullStack-HY_part4_blogilista.git"
+  },
+  "author": "Henri Mynttinen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mynttih/FullStack-HY_part4_blogilista/issues"
+  },
+  "homepage": "https://github.com/mynttih/FullStack-HY_part4_blogilista#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  }
+}
