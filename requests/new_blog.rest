@@ -1,9 +1,9 @@
-POST http://localhost:3003/api/blogs
+POST http://localhost:3002/api/blogs
 content-type: application/json
 
 {
-    "title": "eka blogi",
-    "author": "Teemu Teekkari",
-    "url": "testi.com",
-    "likes": 0
+    "title": "React patterns",
+    "author": "Michael Chan",
+    "url": "https://reactpatterns.com/",
+    "likes": 7
 }
