@@ -5,7 +5,8 @@ const Blog = mongoose.model('Blog', {
     title: String,
     author: String,
     url: String,
-    likes: Number
+    likes: Number,
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
   })
 
 module.exports = Blog
