@@ -62,7 +62,7 @@ const listWithMultipleBlogs = [
     }  
 ]
 
-describe.skip('list_helpers', () => {
+describe('list_helpers', () => {
     test('dummy is called', () => {
         const blogs = []
     
@@ -89,6 +89,26 @@ describe.skip('list_helpers', () => {
                 title: "Canonical string reduction",
                 author: "Edsger W. Dijkstra",
                 likes: 12
+            })
+        })
+    })
+
+    describe('most blogs', () => {
+        test('when list has multiple blogs equels the author with most blogs', () => {
+            const result = listHelper.mostBlogs(listWithMultipleBlogs)
+            expect(result).toEqual({
+                author: "Robert C. Martin",
+                blogs: 3
+            })
+        })
+    })
+
+    describe('most likes', () => {
+        test('when list has multiple blogs equels the author with most likes', () => {
+            const result = listHelper.mostLikes(listWithMultipleBlogs)
+            expect(result).toEqual({
+                author: "Edsger W. Dijkstra",
+                likes: 17
             })
         })
     })
