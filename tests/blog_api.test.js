@@ -69,7 +69,7 @@ beforeAll(async () => {
     await Promise.all(promiseArray)
 })
 
-describe.skip('blog_api', () => {
+describe('blog_api', () => {
     test('notes are returned as json', async () => {
         const res = await api
             .get('/api/blogs')

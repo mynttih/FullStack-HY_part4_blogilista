@@ -23,6 +23,7 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 //app.use(middleware.logger)
+app.use(middleware.tokenExtractor)
 
 mongoose.Promise = global.Promise
 
