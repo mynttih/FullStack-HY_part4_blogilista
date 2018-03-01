@@ -35,7 +35,29 @@ blogsRouter.get('/:id', async (request, response) => {
         response.status(400).send({ error: 'malformed id'})
     }
 })
-  
+
+blogsRouter.put('/:id', async (request, response) => {
+    try {
+        const body = request.body
+
+        const blog = {
+            user: body.userId,
+            likes: body.likes + 1,
+            author: body.author,
+            title: body.title,
+            url: body.url
+        }
+
+        const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
+        const user = await User.findById(updatedBlog.user)
+        updatedBlog.user = user
+        response.json(updatedBlog)
+    } catch (exception) {
+        console.log(exception)
+        response.status(400).send({ error: 'malformed id' })
+    }
+})
+
 blogsRouter.post('/', async (request, response) => {
     try {
         const body = request.body
@@ -70,6 +92,7 @@ blogsRouter.post('/', async (request, response) => {
         user.blogs = user.blogs.concat(savedBlog._id)
         await user.save()
 
+        savedBlog.user = user
         response.status(201).json(savedBlog)
     } catch (exception) {
         console.log(exception)
@@ -81,6 +104,10 @@ blogsRouter.delete('/:id', async (request, response) => {
     try {
         const deletedBlog = await Blog
             .findByIdAndRemove(request.params.id)
+        
+        const user = await User.findById(deletedBlog.user)
+        user.blogs = user.blogs.filter(blog => blog.toString() !== deletedBlog._id.toString())
+        await user.save()
 
         response.status(204).end()
     } catch (exception) {
